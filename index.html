@@ -3,29 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GREEN AND GROW - Sustainable Fashion Finder</title>
+    <title>GREEN AND GROW - Sustainable Fashion</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #84cc16; /* Lime Green */
+            --primary-dark: #65a30d; /* Darker Lime Green */
+            --text-color: #1f2937; /* Dark Grey */
+            --bg-color: #f9fafb; /* Off-White */
+            --border-color: #e5e7eb; /* Light Grey */
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(16, 185, 129, 0.7)"><circle cx="12" cy="12" r="8"/></svg>') 12 12, auto;
+            font-family: 'Poppins', sans-serif;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(132, 204, 22, 0.7)"><circle cx="12" cy="12" r="8"/></svg>') 12 12, auto;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
         a, button, input {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32"><path fill="rgba(16, 185, 129, 0.8)" d="M11.3,24.27l-5.67-5.68a1,1,0,0,1,0-1.42l3.54-3.53a1,1,0,0,1,1.41,0L16,19.05a1,1,0,0,1,0,1.41Z"/><path fill="rgba(16, 185, 129, 0.9)" d="m18.3,19.1-2.88-2.88a1,1,0,0,1,0-1.41l3.54-3.54a1,1,0,0,1,1.41,0L25.7,16.6a1,1,0,0,1,0,1.41l-3.54,3.54a1,1,0,0,1-1.41,0Z"/></svg>') 0 0, pointer;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32"><path fill="rgba(132, 204, 22, 0.8)" d="M11.3,24.27l-5.67-5.68a1,1,0,0,1,0-1.42l3.54-3.53a1,1,0,0,1,1.41,0L16,19.05a1,1,0,0,1,0,1.41Z"/><path fill="rgba(132, 204, 22, 0.9)" d="m18.3,19.1-2.88-2.88a1,1,0,0,1,0-1.41l3.54-3.54a1,1,0,0,1,1.41,0L25.7,16.6a1,1,0,0,1,0,1.41l-3.54,3.54a1,1,0,0,1-1.41,0Z"/></svg>') 0 0, pointer;
         }
         .hidden { display: none; }
-        .nav-link-active { color: #10b981; }
+        .nav-link-active { color: var(--primary-color); font-weight: 600; }
         .gradient-text {
-            background: linear-gradient(to right, #10b981, #059669);
+            background: linear-gradient(to right, #a3e635, #84cc16);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .card-hover { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+        .card-hover { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .card-hover:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         .dropdown-menu {
@@ -40,202 +49,180 @@
             opacity: 1;
             pointer-events: auto;
         }
-        /* New Animations on Scroll */
         .animatable {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .animatable.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Video Background */
-        .video-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-        }
-        #bg-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: 0;
-            transform: translateX(-50%) translateY(-50%);
-            opacity: 0.15;
-        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-emerald-50 via-white to-green-50 text-gray-800">
+<body class="text-gray-900">
 
-    <div class="container mx-auto px-4 py-6 max-w-5xl">
+    <div class="container mx-auto px-4 py-6 max-w-6xl">
         
-        <header class="text-center mb-6 animatable">
-            <h1 class="text-5xl md:text-6xl font-extrabold gradient-text">GREEN AND GROW</h1>
-            <p class="mt-3 text-lg text-gray-600">"Smarter Fashion, Greener Future"</p>
+        <header class="text-center mb-10 mt-6 animatable">
+            <h1 class="text-6xl md:text-7xl font-extrabold gradient-text">GREEN AND GROW 🌱</h1>
+            <p class="mt-4 text-xl text-gray-600 font-medium tracking-wide">Smarter Fashion, Greener Future</p>
         </header>
 
-        <nav id="main-nav" class="bg-white/80 backdrop-blur-md shadow-md rounded-xl sticky top-4 z-50 mb-8 p-4 flex flex-wrap justify-center items-center gap-x-4 sm:gap-x-8 gap-y-2">
-            <a href="#home" class="nav-link font-medium text-gray-700 hover:text-emerald-500 pb-1 transition-colors" data-page="homePage">Home</a>
+        <nav id="main-nav" class="bg-white/90 backdrop-blur-md shadow-lg rounded-full sticky top-4 z-50 mb-12 p-2 flex flex-wrap justify-center items-center gap-x-4 sm:gap-x-8 gap-y-2">
+            <a href="#home" class="nav-link font-medium text-gray-700 hover:text-green-500 transition-colors py-2 px-4 rounded-full" data-page="homePage">Home</a>
             <div class="relative dropdown">
-                 <button class="nav-link font-medium text-gray-700 hover:text-emerald-500 pb-1 transition-colors flex items-center">
-                    About Us
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                 <button class="nav-link font-medium text-gray-700 hover:text-green-500 transition-colors flex items-center py-2 px-4 rounded-full">
+                   About Us
+                   <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                  </button>
-                 <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-lg mt-2 py-2 w-48">
-                    <a href="#mission" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-page="missionPage">Our Mission</a>
-                    <a href="#team" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-page="teamPage">Meet the Team</a>
+                 <div class="dropdown-menu absolute hidden bg-white shadow-xl rounded-2xl mt-2 py-2 w-48 left-1/2 -translate-x-1/2">
+                   <a href="#mission" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-xl mx-2" data-page="missionPage">Our Mission</a>
+                   <a href="#team" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-xl mx-2" data-page="teamPage">Meet the Team</a>
                  </div>
             </div>
-            <a href="#features" class="nav-link font-medium text-gray-700 hover:text-emerald-500 pb-1 transition-colors" data-page="featuresPage">Features</a>
-            <a href="#howitworks" class="nav-link font-medium text-gray-700 hover:text-emerald-500 pb-1 transition-colors" data-page="howItWorksPage">How It Works</a>
-            <a href="#partners" class="nav-link font-medium text-gray-700 hover:text-emerald-500 pb-1 transition-colors" data-page="partnersPage">Local Partners</a>
-            <a href="#contact" class="nav-link font-medium text-gray-700 hover:text-emerald-500 pb-1 transition-colors" data-page="contactPage">Contact Us</a>
+            <a href="#features" class="nav-link font-medium text-gray-700 hover:text-green-500 transition-colors py-2 px-4 rounded-full" data-page="featuresPage">Features</a>
+            <a href="#howitworks" class="nav-link font-medium text-gray-700 hover:text-green-500 transition-colors py-2 px-4 rounded-full" data-page="howItWorksPage">How It Works</a>
+            <a href="#partners" class="nav-link font-medium text-gray-700 hover:text-green-500 transition-colors py-2 px-4 rounded-full" data-page="partnersPage">Local Partners</a>
+            <a href="#contact" class="nav-link font-medium text-gray-700 hover:text-green-500 transition-colors py-2 px-4 rounded-full" data-page="contactPage">Contact Us</a>
         </nav>
 
         <main>
             <section id="homePage" class="page">
-                <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-8 animatable video-container">
-                    <!-- Background Video -->
-                    <video id="bg-video" autoplay loop muted playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-jeans-fabric-close-up-886-large.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="relative z-10">
-                        <label for="clothing-item" class="block text-xl font-semibold text-gray-800 mb-3">Find a Sustainable Alternative</label>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <input type="text" id="clothing-item" class="flex-grow w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 transition" placeholder="e.g., 'jeans', 'shirt repair'...">
-                            <button id="search-btn" class="w-full sm:w-auto bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-transform transform hover:scale-105">
-                                Search
-                            </button>
+                <div class="bg-white rounded-3xl shadow-lg p-6 sm:p-10 mb-12 animatable">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div class="md:w-1/2">
+                            <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4">Discover Sustainable Fashion Alternatives Locally.</h2>
+                            <p class="text-gray-600 mb-6 text-lg">Find pre-loved treasures, expert repair services, and local upcycling artisans near you. Make conscious choices, one garment at a time.</p>
+                            <label for="clothing-item" class="block text-xl font-semibold text-gray-800 mb-3">Find a Sustainable Alternative</label>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <input type="text" id="clothing-item" class="flex-grow w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition placeholder:text-gray-400" placeholder="e.g., 'jeans', 'shirt repair'...">
+                                <button id="search-btn" class="w-full sm:w-auto bg-green-600 text-white font-bold py-4 px-8 rounded-xl hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform active:scale-95">
+                                    Search ✨
+                                </button>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="image copy 2.png" alt="" class="rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
                         </div>
                     </div>
                 </div>
-                <div id="suggestions-container" class="grid md:grid-cols-2 gap-6"></div>
+                <div id="suggestions-container" class="grid md:grid-cols-2 gap-8"></div>
             </section>
 
-            <section id="missionPage" class="page hidden bg-white p-8 rounded-2xl shadow-lg">
+            <section id="missionPage" class="page hidden bg-white p-8 rounded-3xl shadow-lg">
                 <h2 class="text-3xl font-bold mb-6 text-center gradient-text animatable">Our Mission</h2>
-                <div class="space-y-4 text-gray-700 leading-relaxed max-w-3xl mx-auto">
-                    <p class="animatable"><strong>GREEN AND GROW</strong> is a Greentech initiative aimed at tackling the textile waste crisis by promoting smarter fashion choices and a circular economy. Our solution is a web application that will use AI-driven sensors to analyze clothing, assess a garment's fabric type and quality, predict its lifespan, and provide actionable recommendations for recycling and upcycling.</p>
+                <div class="space-y-6 text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                    <p class="animatable"><strong>GREEN AND GROW</strong> is a Greentech initiative tackling the textile waste crisis by promoting smarter fashion choices and a circular economy. Our solution is a web application that will use AI-driven sensors to analyze clothing, assess a garment's fabric type and quality, predict its lifespan, and provide actionable recommendations for recycling and upcycling.</p>
                     <p class="animatable">This innovative approach solves the problem of consumers struggling to evaluate fabric quality and find sustainable disposal options. It empowers users to make informed purchasing decisions, reduces textile waste in landfills, and supports local artisans by connecting them with raw materials. We aim to build a more conscious and ethical fashion industry.</p>
                 </div>
             </section>
             
             <section id="teamPage" class="page hidden">
-                <h2 class="text-3xl font-bold mb-8 text-center gradient-text animatable">Meet the Team</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-lg mx-auto">
-                    <div class="text-center animatable">
-                        <img src="https://i.imgur.com/9Yg9r1j.jpeg" alt="Megha Singh" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4 transform hover:scale-110 transition-transform duration-300">
+                <h2 class="text-3xl font-bold mb-10 text-center gradient-text animatable">Meet the Team</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-2xl mx-auto">
+                    <div class="text-center animatable card-hover bg-white p-6 rounded-3xl shadow-md">
+                        <img src="image.png" alt="Megha Singh" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4 transform transition-transform duration-300 hover:scale-105">
                         <h3 class="text-xl font-bold">Megha Singh</h3>
-                        <p class="text-emerald-600">CEO & Marketing Head</p>
+                        <p class="text-green-600 font-semibold">CEO & Marketing Head</p>
                     </div>
-                    <div class="text-center animatable">
-                        <img src="https://i.imgur.com/WbC6z4s.jpeg" alt="Sneha Priya" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4 transform hover:scale-110 transition-transform duration-300">
+                    <div class="text-center animatable card-hover bg-white p-6 rounded-3xl shadow-md">
+                        <img src="snehapriya.png" alt="Sneha Priya" class="w-40 h-40 mx-auto rounded-full object-cover shadow-lg mb-4 transform transition-transform duration-300 hover:scale-105">
                         <h3 class="text-xl font-bold">Sneha Priya</h3>
-                        <p class="text-emerald-600">Technical & Sales Head</p>
+                        <p class="text-green-600 font-semibold">Technical & Sales Head</p>
                     </div>
                 </div>
             </section>
 
-            <section id="featuresPage" class="page hidden bg-white p-8 rounded-2xl shadow-lg">
-                <h2 class="text-3xl font-bold mb-8 text-center gradient-text animatable">Our Features</h2>
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Feature Cards with Images -->
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover animatable flex flex-col items-center text-center">
-                        <img src="https://i.imgur.com/b9t3s9a.jpeg" alt="AI Fabric Scanning" class="w-full h-40 object-cover rounded-lg mb-4">
+            <section id="featuresPage" class="page hidden bg-white p-8 rounded-3xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-10 text-center gradient-text animatable">Our Features</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-gray-50 p-6 rounded-2xl card-hover animatable flex flex-col items-center text-center">
+                        <img src="image copy 7.png" alt="AI Fabric Scanning" class="w-full h-40 object-cover rounded-xl mb-4">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">AI Fabric Scanning</h3>
-                        <p class="text-gray-600">Instantly analyze fabric type and quality with our AI-powered scanner.</p>
+                        <p class="text-gray-600 text-sm">Instantly analyze fabric type and quality with our AI-powered scanner.</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover animatable flex flex-col items-center text-center">
-                        <img src="https://placehold.co/600x400/a78bfa/ffffff?text=Lifespan+Prediction" alt="Lifespan Prediction" class="w-full h-40 object-cover rounded-lg mb-4">
+                    <div class="bg-gray-50 p-6 rounded-2xl card-hover animatable flex flex-col items-center text-center">
+                        <img src="image copy 4.png" alt="Lifespan Prediction" class="w-full h-40 object-cover rounded-xl mb-4">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Lifespan Prediction</h3>
-                        <p class="text-gray-600">Get durability predictions to make smarter purchasing decisions.</p>
+                        <p class="text-gray-600 text-sm">Get durability predictions to make smarter purchasing decisions.</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover animatable flex flex-col items-center text-center">
-                        <img src="https://i.imgur.com/T0i3y4g.jpeg" alt="Upcycled Products" class="w-full h-40 object-cover rounded-lg mb-4">
+                    <div class="bg-gray-50 p-6 rounded-2xl card-hover animatable flex flex-col items-center text-center">
+                        <img src="image copy 6.png" alt="Upcycled Products" class="w-full h-40 object-cover rounded-xl mb-4">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Upcycling & Customization</h3>
-                        <p class="text-gray-600">Transform old clothes into new products by connecting with local artisans.</p>
+                        <p class="text-gray-600 text-sm">Transform old clothes into new products by connecting with local artisans.</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-xl card-hover animatable flex flex-col items-center text-center">
-                        <img src="https://placehold.co/600x400/34d399/ffffff?text=Seamless+Recycling" alt="Seamless Recycling" class="w-full h-40 object-cover rounded-lg mb-4">
+                    <div class="bg-gray-50 p-6 rounded-2xl card-hover animatable flex flex-col items-center text-center">
+                        <img src="image copy 5.png" alt="Seamless Recycling" class="w-full h-40 object-cover rounded-xl mb-4">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Seamless Recycling</h3>
-                        <p class="text-gray-600">Connect with thrift stores and recycling centers for easy disposal.</p>
+                        <p class="text-gray-600 text-sm">Connect with thrift stores and recycling centers for easy disposal.</p>
                     </div>
                 </div>
             </section>
 
             <section id="howItWorksPage" class="page hidden">
-                 <h2 class="text-3xl font-bold mb-8 text-center gradient-text animatable">How It Works</h2>
-                 <div class="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
-                    <div class="text-center animatable"><img src="https://i.imgur.com/Y3U2mJO.jpeg" alt="NIR Sensor scanning fabric" class="rounded-xl shadow-lg mx-auto"></div>
+                 <h2 class="text-3xl font-bold mb-10 text-center gradient-text animatable">How It Works</h2>
+                 <div class="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
+                    <div class="text-center animatable"><img src="image copy 3.png" alt="NIR Sensor scanning fabric" class="rounded-2xl shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300"></div>
                     <div class="animatable">
                         <h3 class="text-2xl font-bold mb-2">Infrared Spectroscopy (NIR)</h3>
-                        <p class="text-gray-600">Our device uses near-infrared light to analyze a fabric's spectral properties. Different materials reflect light differently, allowing the sensor to accurately identify the fiber composition, even in blended fabrics.</p>
+                        <p class="text-gray-600 leading-relaxed">Our device uses near-infrared light to analyze a fabric's spectral properties. Different materials reflect light differently, allowing the sensor to accurately identify the fiber composition, even in blended fabrics.</p>
                     </div>
-                    <div class="animatable">
+                    <div class="animatable order-last md:order-none">
                         <h3 class="text-2xl font-bold mb-2">AI + Computer Vision</h3>
-                        <p class="text-gray-600">A high-resolution camera and AI image recognition scan a fabric's texture and patterns. Machine learning algorithms compare the scan to a vast database to predict the garment's quality and detect any damage.</p>
+                        <p class="text-gray-600 leading-relaxed">A high-resolution camera and AI image recognition scan a fabric's texture and patterns. Machine learning algorithms compare the scan to a vast database to predict the garment's quality and detect any damage.</p>
                     </div>
-                     <div class="text-center animatable"><img src="https://i.imgur.com/b9t3s9a.jpeg" alt="AI Vision sensor scanning fabric" class="rounded-xl shadow-lg mx-auto"></div>
+                     <div class="text-center animatable order-first md:order-none"><img src="https://images.unsplash.com/photo-1559814421-27103a8ec301?q=80&w=1964&auto=format&fit=crop" alt="AI Vision sensor scanning fabric" class="rounded-2xl shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300"></div>
                  </div>
             </section>
 
             <section id="partnersPage" class="page hidden">
-                 <h2 class="text-3xl font-bold mb-6 text-center gradient-text animatable">Our Local Partners</h2>
-                 <div id="all-partners-container" class="grid md:grid-cols-2 gap-6"></div>
+                 <h2 class="text-3xl font-bold mb-8 text-center gradient-text animatable">Our Local Partners</h2>
+                 <div id="all-partners-container" class="grid md:grid-cols-2 gap-8"></div>
             </section>
 
-            <section id="contactPage" class="page hidden bg-white p-8 rounded-2xl shadow-lg">
+            <section id="contactPage" class="page hidden bg-white p-8 rounded-3xl shadow-lg">
                 <h2 class="text-3xl font-bold mb-6 text-center gradient-text animatable">Get In Touch</h2>
                 <form id="contact-form" class="max-w-xl mx-auto animatable">
-                    <div class="mb-4"><label for="name" class="block text-gray-700 font-medium mb-2">Name</label><input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" required></div>
-                    <div class="mb-4"><label for="email" class="block text-gray-700 font-medium mb-2">Email</label><input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" required></div>
-                    <div class="mb-6"><label for="message" class="block text-gray-700 font-medium mb-2">Message</label><textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" required></textarea></div>
-                    <div class="text-center"><button type="submit" class="bg-emerald-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition">Send Message</button></div>
+                    <div class="mb-5"><label for="name" class="block text-gray-700 font-medium mb-2">Name</label><input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required></div>
+                    <div class="mb-5"><label for="email" class="block text-gray-700 font-medium mb-2">Email</label><input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required></div>
+                    <div class="mb-6"><label for="message" class="block text-gray-700 font-medium mb-2">Message</label><textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required></textarea></div>
+                    <div class="text-center"><button type="submit" class="bg-green-600 text-white font-bold py-4 px-10 rounded-xl hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition active:scale-95">Send Message</button></div>
                 </form>
-                 <p id="form-success-message" class="text-center mt-4 text-green-600 font-medium hidden">Thank you for your message! We'll get back to you soon.</p>
+                 <p id="form-success-message" class="text-center mt-6 text-green-600 font-medium hidden">Thank you for your message! We'll get back to you soon. 💚</p>
             </section>
         </main>
         
-        <footer class="text-center mt-12 py-6 border-t border-gray-200">
-            <p class="text-gray-600">&copy; 2025 GREEN AND GROW. All Rights Reserved.</p>
+        <footer class="text-center mt-16 py-8 border-t border-gray-200">
+            <p class="text-gray-500 font-medium">&copy; 2025 GREEN AND GROW. All Rights Reserved.</p>
         </footer>
     </div>
 
     <script>
-        // --- Data & Config ---
         const localAlternatives = [
-             { name: "Danapur Thrift Treasures", type: "Thrift Store", category: "Thrift", description: "A cozy spot with a curated collection of pre-loved clothing for all ages.", address: "12, Bailey Road, Danapur, Patna", imageUrl: "https://placehold.co/600x400/34d399/1f2937?text=Thrift+Treasures", keywords: ["thrift", "second-hand", "jeans", "shirt", "kurta", "jacket", "saree"] },
-            { name: "The Stitching Corner", type: "Repair Shop", category: "Repair", description: "Expert alterations and repairs for all types of garments.", address: "Shop 4, Gola Road Market, Danapur", imageUrl: "https://placehold.co/600x400/fbbf24/1f2937?text=The+Stitching+Corner", keywords: ["repair", "alteration", "fix", "jeans", "pants", "zip", "stitch", "dress"] },
-            { name: "Bihar Handlooms & Co.", type: "Ethical Brand", category: "Ethical", description: "Showcasing beautiful, locally sourced handloom fabrics like Khadi.", address: "Khagaul Road, Danapur Cantt, Patna", imageUrl: "https://placehold.co/600x400/60a5fa/1f2937?text=Bihar+Handlooms", keywords: ["ethical", "sustainable", "local", "brand", "khadi", "shirt", "kurta", "saree"] },
-            { name: "Danapur Upcycle Studio", type: "Upcycling Service", category: "Upcycle", description: "Connect with artisans who can transform your old clothes into new products.", address: "Online Collective, Danapur", imageUrl: "https://i.imgur.com/T0i3y4g.jpeg", keywords: ["upcycle", "custom", "redesign", "jeans", "jacket", "bag", "t-shirt"] }
+            { name: "Danapur Thrift Treasures", type: "Thrift Store", category: "Thrift", description: "A cozy spot with a curated collection of pre-loved clothing for all ages.", address: "12, Bailey Road, Danapur, Patna", imageUrl: "https://images.unsplash.com/photo-1513233157805-4f4df703d15b?q=80&w=1932&auto=format&fit=crop", keywords: ["thrift", "second-hand", "jeans", "shirt", "kurta", "jacket", "saree"] },
+            { name: "The Stitching Corner", type: "Repair Shop", category: "Repair", description: "Expert alterations and repairs for all types of garments.", address: "Shop 4, Gola Road Market, Danapur", imageUrl: "https://images.unsplash.com/photo-1518118029056-b07675f9218d?q=80&w=1935&auto=format&fit=crop", keywords: ["repair", "alteration", "fix", "jeans", "pants", "zip", "stitch", "dress"] },
+            { name: "Bihar Handlooms & Co.", type: "Ethical Brand", category: "Ethical", description: "Showcasing beautiful, locally sourced handloom fabrics like Khadi.", address: "Khagaul Road, Danapur Cantt, Patna", imageUrl: "https://images.unsplash.com/photo-1577789417852-c0e0b35520a2?q=80&w=1974&auto=format&fit=crop", keywords: ["ethical", "sustainable", "local", "brand", "khadi", "shirt", "kurta", "saree"] },
+            { name: "Danapur Upcycle Studio", type: "Upcycling Service", category: "Upcycle", description: "Connect with artisans who can transform your old clothes into new products.", address: "Online Collective, Danapur", imageUrl: "https://images.unsplash.com/photo-1589255627255-0820067d020d?q=80&w=1964&auto=format&fit=crop", keywords: ["upcycle", "custom", "redesign", "jeans", "jacket", "bag", "t-shirt"] }
         ];
+
         const icons = {
-            Thrift: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-emerald-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-1.707 1.707A1 1 0 003 15v4a1 1 0 001 1h12a1 1 0 001-1v-4a1 1 0 00-.293-.707L16 11.586V8a6 6 0 00-6-6zm-4 8a4 4 0 118 0v3H6v-3z" /></svg>`,
-            Repair: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-amber-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0L7.86 5.89c-.33.18-.68.32-1.05.39L4.03 6.67c-1.6.25-2.28 2.18-1.04 3.33l2.1 2.23c.25.26.37.62.3.98l-.6 2.87c-.4 1.5.9 2.82 2.36 2.12l2.45-1.35c.33-.18.72-.18 1.05 0l2.45 1.35c1.46.7 2.76-.62 2.36-2.12l-.6-2.87c-.07-.36.05-.72.3-.98l2.1-2.23c1.24-1.15.56-3.08-1.04-3.33l-2.78-.42c-.37-.06-.72-.2-.1.05-.39L11.49 3.17z" clip-rule="evenodd" /></svg>`,
-            Ethical: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>`,
-            Upcycle: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v1H5V4zM5 7h10v9a2 2 0 01-2 2H7a2 2 0 01-2-2V7z" /></svg>`
+            Thrift: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M6 9h12a2 2 0 012 2v3a2 2 0 01-2 2H6a2 2 0 01-2-2v-3a2 2 0 012-2z" /></svg>`,
+            Repair: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+            Ethical: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.01 12.01 0 003 12c0 2.83 1.346 5.33 3.447 7.042C8.077 20.254 9.946 21 12 21c2.053 0 3.922-.746 5.553-1.958A12.01 12.01 0 0021 12c0-2.83-1.346-5.33-3.447-7.042z" /></svg>`,
+            Upcycle: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a2 2 0 012 2v2m-2 2h2m-2 2v4m-2-2h-2m-2 4h4m-2 4h2m-2-4v4m-2-2h-4a2 2 0 01-2-2v-4m-2-2h2m-2 2v2m-2 2h4m-2-4v-4a2 2 0 012-2h4a2 2 0 012 2v2" /></svg>`
         };
 
-        // --- DOM Elements ---
         const nav = document.getElementById('main-nav');
         const pages = document.querySelectorAll('.page');
-
-        // --- Functions ---
+        
         const changePage = (pageId) => {
             pages.forEach(page => page.classList.add('hidden'));
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.remove('hidden');
-                // Trigger animations for elements on the new page
                 const animatedElements = targetPage.querySelectorAll('.animatable');
                 animatedElements.forEach(el => {
-                    // Use a timeout to ensure the class is re-applied after the element is visible
                     setTimeout(() => {
                         if (isElementInViewport(el)) {
                             el.classList.add('is-visible');
@@ -243,10 +230,8 @@
                     }, 100);
                 });
             } else {
-                document.getElementById('homePage').classList.remove('hidden'); // Fallback
+                document.getElementById('homePage').classList.remove('hidden');
             }
-
-            // Update active nav link
             document.querySelectorAll('#main-nav .nav-link').forEach(link => {
                 link.classList.remove('nav-link-active');
             });
@@ -258,18 +243,16 @@
                     dropdownParent.querySelector('button').classList.add('nav-link-active');
                 }
             } else {
-                // Handle case where it's a dropdown child
+                const dropdownButton = document.querySelector('.dropdown button');
                 const missionLink = document.querySelector(`#main-nav a[data-page="missionPage"]`);
-                const teamLink = document.querySelector(`#main-nav a[data-page="teamPage"]`);
                 if((pageId === 'missionPage' || pageId === 'teamPage') && missionLink.closest('.dropdown')){
-                     missionLink.closest('.dropdown').querySelector('button').classList.add('nav-link-active');
+                    dropdownButton.classList.add('nav-link-active');
                 } else {
-                     document.querySelector(`#main-nav a[data-page="homePage"]`).classList.add('nav-link-active');
+                    document.querySelector(`#main-nav a[data-page="homePage"]`).classList.add('nav-link-active');
                 }
             }
         };
 
-        // --- Event Listeners ---
         nav.addEventListener('click', (e) => {
             const link = e.target.closest('a[data-page]');
             if (link) {
@@ -280,25 +263,24 @@
             }
         });
         
-        // --- Search Functionality ---
         const searchBtn = document.getElementById('search-btn');
         const clothingItemInput = document.getElementById('clothing-item');
         const suggestionsContainer = document.getElementById('suggestions-container');
         
         const createSuggestionCard = (alt, index) => {
-            return `<div class="bg-white rounded-2xl shadow-md p-4 flex flex-col card-hover animatable" style="transition-delay: ${index * 100}ms">
-                        <img src="${alt.imageUrl}" alt="${alt.name}" class="w-full h-40 object-cover rounded-xl mb-4">
-                        <div class="flex-grow">
-                            <h3 class="text-xl font-bold text-gray-800">${alt.name}</h3>
-                            <p class="font-semibold flex items-center mt-1">${icons[alt.category] || ''} ${alt.type}</p>
-                            <p class="text-gray-600 mt-2 text-sm">${alt.description}</p>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-4">${alt.address}</p>
-                    </div>`;
+            return `<div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col card-hover animatable" style="transition-delay: ${index * 100}ms">
+                <img src="${alt.imageUrl}" alt="${alt.name}" class="w-full h-48 object-cover rounded-xl mb-4">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold text-gray-800">${alt.name}</h3>
+                    <p class="font-semibold flex items-center mt-2 text-gray-700">${icons[alt.category] || ''} ${alt.type}</p>
+                    <p class="text-gray-600 mt-3 text-base">${alt.description}</p>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">${alt.address}</p>
+            </div>`;
         }
 
         const displaySuggestions = (container, alternatives) => {
-            container.innerHTML = alternatives.map(createSuggestionCard).join('') || `<p class="text-center text-gray-500 md:col-span-2">No alternatives found.</p>`;
+            container.innerHTML = alternatives.map(createSuggestionCard).join('') || `<p class="text-center text-gray-500 md:col-span-2 py-10">No alternatives found for that search. Try something else!</p>`;
             container.querySelectorAll('.animatable').forEach(el => el.classList.add('is-visible'));
         };
 
@@ -311,7 +293,6 @@
         searchBtn.addEventListener('click', searchAlternatives);
         clothingItemInput.addEventListener('keyup', (e) => e.key === 'Enter' && searchAlternatives());
         
-        // --- Contact Form ---
         const contactForm = document.getElementById('contact-form');
         const formSuccessMessage = document.getElementById('form-success-message');
         contactForm.addEventListener('submit', (e) => {
@@ -321,7 +302,6 @@
             setTimeout(() => formSuccessMessage.classList.add('hidden'), 3000);
         });
 
-        // --- Scroll Animations ---
         const isElementInViewport = (el) => {
             const rect = el.getBoundingClientRect();
             return (rect.top <= (window.innerHeight || document.documentElement.clientHeight) && rect.bottom >= 0);
@@ -336,14 +316,13 @@
             });
         };
 
-        // --- Initial Load ---
         const handleInitialLoad = () => {
             const hash = window.location.hash.substring(1);
             const pageId = (hash && document.getElementById(hash + 'Page')) ? hash + 'Page' : 'homePage';
             changePage(pageId);
             displaySuggestions(suggestionsContainer, localAlternatives);
             displaySuggestions(document.getElementById('all-partners-container'), localAlternatives);
-            handleScrollAnimations(); // Animate elements visible on load
+            handleScrollAnimations();
         };
 
         window.addEventListener('DOMContentLoaded', handleInitialLoad);
@@ -351,4 +330,3 @@
     </script>
 </body>
 </html>
-
