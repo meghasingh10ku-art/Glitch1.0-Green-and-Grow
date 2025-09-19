@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+     
     <script>
         // Avoids "flash of unstyled content" by applying the theme before the page loads
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -197,7 +198,7 @@
                          <h3 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">AI + Computer Vision</h3>
                          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">A high-resolution camera and AI image recognition scan a fabric's texture and patterns. Machine learning algorithms compare the scan to a vast database to predict the garment's quality and detect any damage.</p>
                      </div>
-                      <div class="text-center animatable order-first md:order-none"><img src="https://images.unsplash.com/photo-1559814421-27103a8ec301?q=80&w=1964&auto=format&fit=crop" alt="AI Vision sensor scanning fabric" class="rounded-2xl shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300"></div>
+                      <div class="text-center animatable order-first md:order-none"><img src="sensor.jpg" alt="AI Vision sensor scanning fabric" class="rounded-2xl shadow-lg mx-auto transform hover:scale-105 transition-transform duration-300"></div>
                  </div>
             </section>
 
@@ -226,10 +227,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const localAlternatives = [
-                { name: "Danapur Thrift Treasures", type: "Thrift Store", category: "Thrift", description: "A cozy spot with a curated collection of pre-loved clothing for all ages.", address: "12, Bailey Road, Danapur, Patna", imageUrl: "https://images.unsplash.com/photo-1513233157805-4f4df703d15b?q=80&w=1932&auto=format&fit=crop", keywords: ["thrift", "second-hand", "jeans", "shirt", "kurta", "jacket", "saree"] },
-                { name: "The Stitching Corner", type: "Repair Shop", category: "Repair", description: "Expert alterations and repairs for all types of garments.", address: "Shop 4, Gola Road Market, Danapur", imageUrl: "https://images.unsplash.com/photo-1518118029056-b07675f9218d?q=80&w=1935&auto=format&fit=crop", keywords: ["repair", "alteration", "fix", "jeans", "pants", "zip", "stitch", "dress"] },
-                { name: "Bihar Handlooms & Co.", type: "Ethical Brand", category: "Ethical", description: "Showcasing beautiful, locally sourced handloom fabrics like Khadi.", address: "Khagaul Road, Danapur Cantt, Patna", imageUrl: "https://images.unsplash.com/photo-1577789417852-c0e0b35520a2?q=80&w=1974&auto=format&fit=crop", keywords: ["ethical", "sustainable", "local", "brand", "khadi", "shirt", "kurta", "saree"] },
-                { name: "Danapur Upcycle Studio", type: "Upcycling Service", category: "Upcycle", description: "Connect with artisans who can transform your old clothes into new products.", address: "Online Collective, Danapur", imageUrl: "https://images.unsplash.com/photo-1589255627255-0820067d020d?q=80&w=1964&auto=format&fit=crop", keywords: ["upcycle", "custom", "redesign", "jeans", "jacket", "bag", "t-shirt"] }
+                { name: "Danapur Thrift Treasures", type: "Thrift Store", category: "Thrift", description: "A cozy spot with a curated collection of pre-loved clothing for all ages.", address: "12, Bailey Road, Danapur, Patna", imageUrl: "thrift store.jpg", keywords: ["thrift", "second-hand", "jeans", "shirt", "kurta", "jacket", "saree"] },
+                { name: "The Stitching Corner", type: "Repair Shop", category: "Repair", description: "Expert alterations and repairs for all types of garments.", address: "Shop 4, Gola Road Market, Danapur", imageUrl: "stitch.jpg", keywords: ["repair", "alteration", "fix", "jeans", "pants", "zip", "stitch", "dress"] },
+                { name: "Bihar Handlooms & Co.", type: "Ethical Brand", category: "Ethical", description: "Showcasing beautiful, locally sourced handloom fabrics like Khadi.", address: "Khagaul Road, Danapur Cantt, Patna", imageUrl: "handloom.jpg", keywords: ["ethical", "sustainable", "local", "brand", "khadi", "shirt", "kurta", "saree"] },
+                { name: "Danapur Upcycle Studio", type: "Upcycling Service", category: "Upcycle", description: "Connect with artisans who can transform your old clothes into new products.", address: "Online Collective, Danapur", imageUrl: "upcycle.jpg", keywords: ["upcycle", "custom", "redesign", "jeans", "jacket", "bag", "t-shirt"] }
             ];
 
             const icons = {
@@ -366,6 +367,8 @@
             window.addEventListener('scroll', handleScrollAnimations);
             handleInitialLoad();
         });
+
+        
     </script>
 </body>
 </html>
